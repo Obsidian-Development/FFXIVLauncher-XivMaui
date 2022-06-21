@@ -25,11 +25,11 @@
             <Entry x:Name="regioncheck"    Text=""  Placeholder="Регион" />
 
 
-            <Entry    Text=""   Placeholder="Язык"/>
+            <Entry x:Name="lnggcheck"   Text=""   Placeholder="Язык"/>
             <Entry x:Name="gamepathtextb"    Text=""   Placeholder="Путь к игре"/>
 
-            
-            <Button Text="Запуск Игры"   Clicked="Button_Clicked"/>
+
+            <Button Text="Запуск Игры" BackgroundColor ="{AppThemeBinding Light=SlateBlue, Dark=DimGray}"  TextColor ="{AppThemeBinding Light=White, Dark=White}"  Clicked="Button_Clicked"/>
 
         </StackLayout>
         <StackLayout Grid.Column="2" Margin="20" Spacing="10">

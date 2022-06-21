@@ -72,13 +72,14 @@ namespace XivLaunch
             int expansionLevel = int.Parse(expchck.Text);
             Console.Write("Укажите регион установленного клиента. Действующие в настоящее время \n 1- Japan , 2 - America , 3 - International: - ");
             int region = int.Parse(regioncheck.Text);
+            int langs = int.Parse(lnggcheck.Text);
             try
             {
                 var sid = networklogic.GetRealSid(gamePath, username, password, otp, isSteam);
                 if (sid.Equals("BAD"))
                     return;
 
-                var ffxivGame = networklogic.LaunchGame(gamePath, sid, 1, dx11, expansionLevel, isSteam, region);
+                var ffxivGame = networklogic.LaunchGame(gamePath, sid, langs, dx11, expansionLevel, isSteam, region);
 
 
 
