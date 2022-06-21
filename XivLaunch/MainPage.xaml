@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XivLaunch.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="450"/>
+            <ColumnDefinition Width="110"/>
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Column="1" Margin="20" Spacing="10">
+            <Entry  x:Name="LoginBox"    Text=""   Placeholder="Введите Логин" />
+
+            <Entry  x:Name="PASS"    Placeholder="Введите Пароль"  IsPassword="true"/>
+
+
+            <Entry x:Name="otptext"    Text=""   Placeholder="Ключ Двух-Факторной Аунтефикации"/>
+            <Entry x:Name="expchck"    Text=""  Placeholder="Дополнение"/>
+            <Entry x:Name="regioncheck"    Text=""  Placeholder="Регион" />
+
+
+            <Entry    Text=""   Placeholder="Язык"/>
+            <Entry x:Name="gamepathtextb"    Text=""   Placeholder="Путь к игре"/>
+
+            
+            <Button Text="Запуск Игры"   Clicked="Button_Clicked"/>
+
+        </StackLayout>
+        <StackLayout Grid.Column="2" Margin="20" Spacing="10">
+            <Label Text="DirectX 11"
+                    VerticalOptions="Center" />
+            <CheckBox x:Name="dx11chck"  Color="{AppThemeBinding Light=Black, Dark=White}" >
+                
+            </CheckBox>
+            <Label Text="Steam"
+                    VerticalOptions="Center" />
+            <CheckBox x:Name="steamcheck" Color="{AppThemeBinding Light=Black, Dark=White}"  >
+                
+            </CheckBox>
+            
+            
+            
+        </StackLayout>
+
+    </Grid>
+
+    
+
+</ContentPage>
