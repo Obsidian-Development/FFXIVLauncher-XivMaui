@@ -7,12 +7,6 @@ LibLaunchSupport/bin
 LibLaunchSupport/obj
 packages
 .vs/XivUWPLaunchMockup/v17/.suo
-*.dll
-*.png
-*.exe
-*.pri
-*.ttf
-*.json
 bin
 obj
 .vs/XivUWPLaunchMockup/v17/.suo
