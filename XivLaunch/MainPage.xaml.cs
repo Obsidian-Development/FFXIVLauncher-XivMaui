@@ -1,4 +1,4 @@
-﻿using LibLaunchSupport;
+﻿using CoreLibLaunchSupport;
 
 namespace XivLaunch
 {
@@ -79,7 +79,7 @@ namespace XivLaunch
                 if (sid.Equals("BAD"))
                     return;
 
-                var ffxivGame = networklogic.LaunchGame(gamePath, sid, langs, dx11, expansionLevel, isSteam, region);
+                var ffxivGame = networklogic.LaunchGameAsync(gamePath, sid, langs, dx11, expansionLevel, isSteam, region);
 
 
 
