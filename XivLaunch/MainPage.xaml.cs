@@ -1,5 +1,6 @@
 ﻿using CoreLibLaunchSupport;
 
+
 namespace XivLaunch
 {
     public partial class MainPage : ContentPage
@@ -10,26 +11,23 @@ namespace XivLaunch
         {
             InitializeComponent();
         }
-
+        public static string GetExpansionFolder(byte expansionId) =>
+            expansionId == 0 ? "ffxiv" : $"ex{expansionId}";
+        public static string ReturnXpacNum(ushort expansionId)
+        {
+            var processxpac = GetExpansionFolder((byte)expansionId);
+            return processxpac;
+        }
         async private void Button_Clicked(object sender, EventArgs args)
         {
             string gamePath;
-            if (File.Exists(Directory.GetCurrentDirectory() + @"\gamepath.txt"))
-            {
-                TextReader tr = new StreamReader("gamepath.txt");
-                string gamePathread = tr.ReadLine();
-                gamePath = gamePathread;
-                tr.Close();
-                Console.WriteLine(gamePath);
-            }
-            else
-            {
-                Console.Write("Введите путь до клиента игры - ");
-                gamePath = gamepathtextb.Text;
+            
+            Console.Write("Введите путь до клиента игры - ");
+            gamePath = gamepathtextb.Text;
                 /* TextWriter tw = new StreamWriter("gamepath.txt");
                  tw.WriteLine(gamePath);
                  tw.Close();*/
-            }
+            
             Console.WriteLine("-------------------------------------");
             bool isSteam = false;
 
@@ -69,9 +67,36 @@ namespace XivLaunch
                 dx11 = false;
             }
             Console.WriteLine("Пожалуйста, введите уровень доступного вам дополнения - на текущий момент валидными являются следущие \n 0- ARR - 1 - Heavensward - 2 - Stormblood - 3 - Shadowbringers");
-            int expansionLevel = int.Parse(expchck.Text);
+            int expansionLevel = 0;
+            var xpacPath = "";
+            if (ReturnXpacNum(1) == "ex1") { xpacPath = "ex1"; }
+            if (ReturnXpacNum(2) == "ex2") { xpacPath = "ex2"; }
+            if (ReturnXpacNum(3) == "ex3") { xpacPath = "ex3"; }
+            if (ReturnXpacNum(4) == "ex4") { xpacPath = "ex4"; }
+            var sqpack = $@"{gamePath}\sqpack\{xpacPath}";
+
+            if (xpacPath == "ex1")
+            {
+                expansionLevel = 1;
+                Console.WriteLine(expansionLevel);
+            }
+            if (xpacPath == "ex2")
+            {
+                expansionLevel = 2;
+                Console.WriteLine(expansionLevel);
+            }
+            if (xpacPath == "ex3")
+            {
+                expansionLevel = 3;
+                Console.WriteLine(expansionLevel);
+            }
+            if (xpacPath == "ex4")
+            {
+                expansionLevel = 4;
+                Console.WriteLine(expansionLevel);
+            }
             Console.Write("Укажите регион установленного клиента. Действующие в настоящее время \n 1- Japan , 2 - America , 3 - International: - ");
-            int region = int.Parse(regioncheck.Text);
+            int region = 3;
             int langs = int.Parse(lnggcheck.Text);
             try
             {

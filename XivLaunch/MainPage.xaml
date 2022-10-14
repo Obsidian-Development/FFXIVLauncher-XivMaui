@@ -21,10 +21,7 @@
 
 
             <Entry x:Name="otptext"    Text=""   Placeholder="Ключ Двух-Факторной Аунтефикации"/>
-            <Entry x:Name="expchck"    Text=""  Placeholder="Дополнение"/>
-            <Entry x:Name="regioncheck"    Text=""  Placeholder="Регион" />
-
-
+            
             <Entry x:Name="lnggcheck"   Text=""   Placeholder="Язык"/>
             <Entry x:Name="gamepathtextb"    Text=""   Placeholder="Путь к игре"/>
 
