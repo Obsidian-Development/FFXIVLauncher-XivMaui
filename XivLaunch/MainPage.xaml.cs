@@ -1,6 +1,6 @@
 ﻿using Config.Net;
 using CoreLibLaunchSupport;
-
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace XivLaunch
 {
@@ -167,6 +167,9 @@ namespace XivLaunch
             {
                 Console.WriteLine(exc.Message);
             }
+            var donots = new ToastContentBuilder().AddArgument("action", "viewConversation").AddArgument("conversationId", 9813).AddText("Game process has been launched")
+    .AddText("You may now play the game");
+            donots.Show();
             Console.ReadLine();
         }
     }
