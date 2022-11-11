@@ -63,6 +63,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Config.Net" Version="5.1.4" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\CoreLibLaunchSupport\CoreLibLaunchSupport.csproj" />
 	</ItemGroup>
 

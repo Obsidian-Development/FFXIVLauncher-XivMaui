@@ -1,15 +1,47 @@
-﻿using CoreLibLaunchSupport;
+﻿using Config.Net;
+using CoreLibLaunchSupport;
 
 
 namespace XivLaunch
 {
+    
     public partial class MainPage : ContentPage
     {
+        private static Storage storage;
         int count = 0;
+        public interface IMySettings
+        {
+            
+            string UserName { get; set;}
 
+            string Passworders { get; set; }
+            string Langnumber { get; set; }
+            string GameLocation { get; set; }
+        }
         public MainPage()
         {
+            storage = new Storage("protocolhandle");
+            IMySettings settings = new ConfigurationBuilder<IMySettings>().UseJsonFile(storage.GetFile("launcher.json").FullName)
+   .Build();
             InitializeComponent();
+            if (settings.UserName != null)
+            {
+                LoginBox.Text= settings.UserName ;
+            }
+            if (settings.Passworders != null)
+            {
+                PASS.Text = settings.Passworders  ;
+            }
+
+            if (settings.Langnumber != null)
+            {
+                lnggcheck.Text = settings.Langnumber;
+            }
+            if (settings.GameLocation != null)
+            {
+                gamepathtextb.Text = settings.GameLocation;
+            }
+
         }
         public static string GetExpansionFolder(byte expansionId) =>
             expansionId == 0 ? "ffxiv" : $"ex{expansionId}";
@@ -20,6 +52,28 @@ namespace XivLaunch
         }
         async private void Button_Clicked(object sender, EventArgs args)
         {
+            storage = new Storage("protocolhandle");
+            IMySettings settings = new ConfigurationBuilder<IMySettings>().UseJsonFile(storage.GetFile("launcher.json").FullName)
+   .Build();
+            if(LoginBox.Text != null)
+            {
+                settings.UserName = LoginBox.Text;
+            } 
+            if(PASS.Text != null)
+            {
+                settings.Passworders = PASS.Text;
+            }
+
+            if (lnggcheck.Text != null)
+            {
+                settings.Langnumber = lnggcheck.Text;
+            }
+            if (gamepathtextb.Text != null)
+            {
+                settings.GameLocation = gamepathtextb.Text;
+            }
+            
+            
             string gamePath;
             
             Console.Write("Введите путь до клиента игры - ");
